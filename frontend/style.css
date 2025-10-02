@@ -1,0 +1,507 @@
+/* ===================== */
+/* RESET & GLOBAL STYLES */
+/* ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: #0a0a0f;
+    color: #fff;
+    transition: 0.3s;
+    overflow-x: hidden;
+}
+
+/* ===================== */
+/* VERSION BADGE */
+/* ===================== */
+.version-badge {
+    background: #28a745;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+/* ===================== */
+/* STARFIELD CANVAS */
+/* ===================== */
+#space {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* ===================== */
+/* HEADER & NAVIGATION */
+/* ===================== */
+header {
+    background: rgba(0, 0, 50, 0.85);
+    color: white;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+nav h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav ul li a,
+nav ul li button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul li a:hover,
+nav ul li button:hover,
+nav ul li a.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===================== */
+/* MAIN LAYOUT */
+/* ===================== */
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    animation: fadeIn 1s ease-in;
+}
+.hero-btn {
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+/* Features Section */
+.features {
+    margin-top: 3rem;
+}
+.feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+}
+.feature {
+    background: rgba(20, 20, 30, 0.85);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+    flex: 1 1 250px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    transition: 0.3s;
+    text-align: center;
+}
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.85);
+}
+
+/* Sections */
+.about, .faq, .share, .contact, .legal {
+    background: rgba(20, 20, 30, 0.85);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    animation: fadeIn 1s ease-in;
+}
+.faq-item {
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    background: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn:hover {
+    background: #218838;
+}
+
+/* ===================== */
+/* UTILITIES LIST */
+/* ===================== */
+ul#utilities-list {
+    position: relative;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+ul#utilities-list li {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(20, 20, 30, 0.95);
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+ul#utilities-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.85);
+}
+
+/* ===================== */
+/* MODAL */
+/* ===================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1001;
+    background-color: rgba(25,25,35,0.95);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    max-height: 70vh;      /* Limit height to 70% of viewport */
+    margin: 5% auto;       /* Center vertically with some spacing */
+    text-align: left;
+    overflow-y: auto;      /* Enable vertical scroll if content exceeds max-height */
+    transition: all 0.4s ease;
+}
+
+/* Optional: style scrollbar for a sleek look */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #28a745;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ===================== */
+/* ANIMATIONS */
+/* ===================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== */
+/* (REMOVED) DARK MODE */
+/* ===================== */
+/*
+   Per project spec: removed light/dark mode state and related selectors.
+   All styles now assume single-theme dark-by-default design.
+*/
+
+/* ===================== */
+/* COMING SOON / UTILITIES BADGES */
+/* ===================== */
+.coming-soon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.count-badge, .download-count {
+    background: rgba(255,255,255,0.06);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #ddd;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    background: linear-gradient(180deg,#28a745,#1e7e34);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.download-btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===================== */
+/* REVIEWS & RATINGS */
+/* ===================== */
+.reviews-section {
+    margin-top: 1rem;
+}
+.reviews-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0;
+}
+.review-item {
+    background: rgba(15,15,20,0.85);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+.star-rating {
+    display: inline-flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+.star {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+.star.empty { filter: grayscale(1) brightness(0.6); }
+
+/* Review form */
+.review-form {
+    display: grid;
+    gap: 0.5rem;
+}
+.review-form textarea {
+    min-height: 80px;
+    resize: vertical;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+}
+
+/* ===================== */
+/* AUTH (SIGN UP / LOGIN / FORGOT) */
+/* ===================== */
+.auth-form {
+    display: grid;
+    gap: 0.6rem;
+}
+.auth-form label {
+    font-size: 0.9rem;
+    color: #ddd;
+}
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+}
+.auth-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+.social-signin {
+    display: flex;
+    gap: 0.5rem;
+}
+.social-btn {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer;
+}
+
+.auth-note {
+    font-size: 0.85rem;
+    color: #bfc9c6;
+}
+.error {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+}
+.success {
+    color: #8ee28e;
+    font-size: 0.85rem;
+}
+
+/* Confirmation / recovery code box */
+.code-box {
+    display: inline-flex;
+    gap: 0.35rem;
+}
+.code-box input {
+    width: 42px;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+}
+
+/* ===================== */
+/* SUGGESTION PAGE */
+/* ===================== */
+.suggestion-form {
+    display: grid;
+    gap: 0.6rem;
+}
+.suggestion-form textarea {
+    min-height: 100px;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+}
+
+.suggestion-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.suggestion-item {
+    background: rgba(18,18,25,0.85);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+}
+
+/* ===================== */
+/* RIGHTS PAGE - READONLY PREVENT EDITING */
+/* ===================== */
+.readonly {
+    pointer-events: none;
+    opacity: 0.9;
+}
+.readonly .file-meta {
+    opacity: 0.95;
+}
+.readonly .edit-btn {
+    display: none; /* hide edit controls on rights page */
+}
+
+/* ===================== */
+/* TOAST / NOTIFICATIONS */
+/* ===================== */
+.toast {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    background: rgba(25,25,30,0.95);
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    color: #fff;
+    z-index: 2000;
+}
+
+/* ===================== */
+/* FOOTER */
+/* ===================== */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0,0,50,0.85);
+    margin-top: 2rem;
+}
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+@media(max-width:768px) {
+    .feature-container {
+        flex-direction: column;
+    }
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .code-box input { width: 36px; }
+}

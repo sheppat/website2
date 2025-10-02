@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="UsefulUtilities - free, safe, and efficient utilities built from scratch to help you save time and solve everyday problems.">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4769500979580060"
+  crossorigin="anonymous"></script>
+
+  <title>UsefulUtilities - Free Tools for Everyone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Starfield Background -->
+  <canvas id="space"></canvas>
+
+  <header>
+    <nav>
+      <h1>UsefulUtilities</h1>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="rights.html">Rights</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="auth.html">Sign Up / Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Welcome to UsefulUtilities</h2>
+      <p>Free, lightweight, and practical tools designed to make your digital life easier.</p>
+      <a href="downloads.html" class="btn hero-btn">Browse Utilities</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <h2>Why Choose UsefulUtilities?</h2>
+      <div class="feature-container">
+        <div class="feature">
+          <h3>Safe & Secure</h3>
+          <p>Each utility is made by the owner and thoroughly tested for safety.</p>
+        </div>
+        <div class="feature">
+          <h3>Regularly Updated</h3>
+          <p>We continuously improve our utilities with new features and bug fixes.</p>
+        </div>
+        <div class="feature">
+          <h3>No Bloat</h3>
+          <p>Every utility is focused, efficient, and built with simplicity in mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <h2>About UsefulUtilities</h2>
+      <p>UsefulUtilities is a personal project dedicated to creating small, efficient, and practical software tools that everyone can use for free.</p>
+      <p>Our philosophy: provide useful tools without bloat, ads, or hidden trackers.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h2>Good to Know</h2>
+      <div class="faq-item">
+        <h3>Are these utilities safe?</h3>
+        <p>Yes! All utilities are created by the owner and tested before upload.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I redistribute the utilities?</h3>
+        <p>No, redistribution without permission is prohibited. Always link back.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do the utilities cost anything?</h3>
+        <p>No, all utilities are completely free.</p>
+      </div>
+    </section>
+
+    <!-- Share -->
+    <section class="share">
+      <h2>Share UsefulUtilities</h2>
+      <button class="btn" id="shareBtn">Share This Site</button>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact">
+      <h2>Contact</h2>
+      <p>Have questions or suggestions? <a href="contact.html">Get in touch</a> or email directly: 
+        <a href="mailto:usefulutilities.shop@gmail.com">usefulutilities.shop@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 UsefulUtilities | <a href="rights.html">Terms & Rights</a></p>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    // SHARE LOGIC
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      const shareData = {
+        title: 'UsefulUtilities',
+        text: 'Check out these free, safe utilities!',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(console.error);
+      } else {
+        navigator.clipboard.writeText(shareData.url);
+        alert("Link copied to clipboard!");
+      }
+    });
+  </script>
+</body>
+</html>
+

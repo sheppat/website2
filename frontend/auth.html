@@ -1,0 +1,87 @@
+<script>
+  const BACKEND_URL = "https://sheppat-github-io.onrender.com"; // <-- Your Render URL
+
+  // Password validation
+  function validPassword(pass) {
+    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{5,15}$/;
+    return regex.test(pass);
+  }
+
+  // --- Sign Up ---
+  document.getElementById('signupForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const username = document.getElementById('signupUser').value;
+    const email = document.getElementById('signupEmail').value;
+    const pass = document.getElementById('signupPass').value;
+
+    if (!validPassword(pass)) {
+      alert("Password must include 1 uppercase, 1 number, 1 special char, length 5–15.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password: pass })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Confirmation code sent to ${email}: ${data.code}`);
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Signup failed. Try again later.");
+    }
+  });
+
+  // --- Log In ---
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pass = document.getElementById('loginPass').value;
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Login successful! Welcome, ${data.username}`);
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Login failed. Try again later.");
+    }
+  });
+
+  // --- Forgot Password ---
+  document.getElementById('forgotForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById('forgotEmail').value;
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/recover`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Recovery code sent to ${email}: ${data.code}`);
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Password recovery failed. Try again later.");
+    }
+  });
+</script>
+

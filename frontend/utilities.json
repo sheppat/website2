@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Ultimate Web Inspector",
+        "version": "1.0",
+        "release_date": "2025-10-01",
+        "description": "Ultimate Web Inspector is a comprehensive, developer-focused utility designed for in-depth website analysis. It provides multiple tabs of detailed information, including HTTP headers, SSL certificate details, meta tags, structured data, detected technologies and frameworks, WHOIS and domain registration data. This tool is ideal for web developers, security researchers, tech enthusiasts, and digital analysts who want a full technical overview of any website. With a modern multi-tab interface and powerful backend parsing, it allows users to explore websites under the hood, inspect security and performance attributes, and gain insights into the tech stack used by any online property.",
+        "file": "downloads/UltimateWebInspector_v1.0.zip",
+        "changelog": [
+            "Initial release with HTTP, SSL, Meta, Tech, and WHOIS tabs",
+            "Basic multi-tab interface"
+        ]
+    },
+    {
+        "name": "Ultimate Web Inspector",
+        "version": "2.0",
+        "release_date": "2025-10-01",
+        "description": "Ultimate Web Inspector 2.0 is the upgraded, nerd-mode version of the tool, offering deeper website analysis. It includes all v1.0 features plus enhanced HTTP insights with response times, redirect history, and cookies, detailed SSL/TLS certificate info with issuer, validity, and expiration countdown, DNS record enumeration (A, AAAA, MX, NS, TXT), meta tag enhancements with script and stylesheet counts, and improved WHOIS parsing. The tech stack detection remains via BuiltWith, with future-ready expansion for libraries and frameworks. Designed for developers, security researchers, and tech enthusiasts, it provides a comprehensive, multi-tab interface to explore websites like never before.",
+        "file": "downloads/UltimateWebInspector_v2.0.zip",
+        "changelog": [
+            "Added SSL tab with certificate info",
+            "Added DNS tab with A, AAAA, MX, NS, TXT records",
+            "Enhanced HTTP tab with response time and cookies",
+            "Improved Meta tab with script and stylesheet counts"
+        ]
+    }
+]
